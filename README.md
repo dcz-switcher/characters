@@ -1,6 +1,6 @@
-# Characters 
+# Characters Figma Plugin
 
-Characters provide a fun way to build your how characters for your Figma projects
+Characters Figma Plugin provide a fun way to build your how characters within your Figma projects ;-)
 
 ![preview](screenshots/Capture_1_w480.png)
 ![preview](screenshots/Capture_2_w480.png)
