@@ -398,6 +398,12 @@
 
   const EYES = [null, EYE_1, EYE_2];
 
+  const character = {
+    skin : 4,
+    eyes: 1
+  };
+
+
   const $menu = document.querySelector('#menu ul');
   
   const $preview = document.querySelector('#preview');
@@ -450,6 +456,7 @@
     if(e.target.tagName === "INPUT" && e.target.name === "eye-shape"){
       try{
         $eyeLayer.innerHTML = EYES[parseInt(e.target.value)];
+        character.eyes = parseInt(e.target.value);
       } catch(e){
         console.log(e);
       }
@@ -473,8 +480,10 @@
     const count = parseInt(textbox.value, 10);
     parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
     */
-  const skinColor = document.querySelector("input[name='skin-color']:checked").value;
-    parent.postMessage({ pluginMessage: { type: 'create-avatar', skinColor } }, '*');
+    const skinColor = document.querySelector("input[name='skin-color']:checked").value;
+    
+    //parent.postMessage({ pluginMessage: { type: 'create-avatar', skinColor } }, '*');
+    parent.postMessage({ pluginMessage: { type: 'create-character', character } }, '*');
   }
 /*
   document.getElementById('cancel').onclick = () => {

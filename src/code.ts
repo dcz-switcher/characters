@@ -8,6 +8,9 @@ const HEAD = '<svg width="98" height="108" viewBox="0 0 98 108" fill="none" xmln
 const EYE_1 = '<svg width="62" height="36" viewBox="0 0 62 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5.11731" y="1.70374" width="22" height="32" rx="11" fill="white"/><rect x="36" y="2" width="22" height="32" rx="11" fill="white"/><rect x="13.0432" y="9.62964" width="10" height="16" rx="5" fill="#434243"/><rect x="39.963" y="9.9259" width="10" height="16" rx="5" fill="#434243"/></svg>';
 const EYE_2 = '<svg width="62" height="36" viewBox="0 0 62 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.11731 18V22.7037C5.11731 28.7789 10.0422 33.7037 16.1173 33.7037C22.1924 33.7037 27.1173 28.7789 27.1173 22.7037V18H5.11731Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13.0432 18V20.6296C13.0432 23.3911 15.2818 25.6296 18.0432 25.6296C20.8046 25.6296 23.0432 23.3911 23.0432 20.6296V18H13.0432Z" fill="#434243"/><path fill-rule="evenodd" clip-rule="evenodd" d="M36 18V23C36 29.0751 40.9249 34 47 34C53.0751 34 58 29.0751 58 23V18H36Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M39.963 18V20.9259C39.963 23.6873 42.2016 25.9259 44.963 25.9259C47.7244 25.9259 49.963 23.6873 49.963 20.9259V18H39.963Z" fill="#434243"/></svg>';
 
+const EYES = [null, EYE_1, EYE_2];
+
+
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, UIDimensions);
 
@@ -28,8 +31,9 @@ figma.ui.onmessage = msg => {
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
   */
-  if (msg.type === 'create-avatar'){
-    console.log('create avatar with skin color ' + msg.skinColor);
+  if (msg.type === 'create-character'){
+    console.log('create character');
+    console.log(msg.character);
     
     const avatarNode : FrameNode = figma.createNodeFromSvg(HEAD);
     avatarNode.name = "Character";
@@ -54,7 +58,8 @@ figma.ui.onmessage = msg => {
     avatarNode.appendChild(eye);
     */
     /** add eye */
-    const eyeNode : FrameNode = figma.createNodeFromSvg(EYE_1);
+    //const eyeNode : FrameNode = figma.createNodeFromSvg(EYE_1);
+    const eyeNode : FrameNode = figma.createNodeFromSvg(EYES[msg.character.eyes]);
     eyeNode.name = "Eyes";
     eyeNode.constraints = {horizontal: "SCALE", vertical: "SCALE"};
     eyeNode.x = 18;
