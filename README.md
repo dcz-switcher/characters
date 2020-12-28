@@ -2,7 +2,9 @@
 
 Characters provide a fun way to build your how characters for your Figma projects
 
-![preview](screenshots/first-attempt.png)
+![preview](screenshots/Capture_1_w480.png)
+![preview](screenshots/Capture_2_w480.png)
+![preview](screenshots/Capture_3_w480.png)
 
 ## Installation
 
