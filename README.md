@@ -4,7 +4,6 @@ Characters provide a fun way to build your how characters for your Figma project
 
 ![preview](screenshots/Capture_1_w480.png)
 ![preview](screenshots/Capture_2_w480.png)
-![preview](screenshots/Capture_3_w480.png)
 
 ## Installation
 
