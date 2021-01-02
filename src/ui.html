@@ -167,13 +167,13 @@
   }
   
   .radio-shape.square .shape{
-    width: 48px;
-    height: 48px;
+    width: 68px;
+    height: 68px;
     border-radius: 4px;
   }
   .radio-shape.square .shape::after{
-    width: 58px;
-    height: 58px;
+    width: 78px;
+    height: 78px;
     top: -9px;
     left: -9px;
     border-radius: 6px;    
@@ -237,9 +237,9 @@
   }
 
   /* special for panel with preview copy scaled */
-  #hair-panel .layer-stack-copy{
+  #hair-panel .layer-stack-clone{
     transform: scale(0.5);
-    transform-origin: left;
+    transform-origin: center;
   }
 
 
@@ -302,7 +302,7 @@
   <section id="panels">
     <div id="panel-stack">
 <!-- SKIN PANEL-->
-      <div id="skin-panel" class="panel ">
+      <div id="skin-panel" class="panel selected">
         <div id="colors">
           <div class="radio-wrap">
             <input type="radio" id="color-1" name="skin-color" value="#5396FA">
@@ -387,19 +387,25 @@
       </div>
 
 <!-- HAIR PANEL -->
-      <div id="hair-panel" class="panel selected">
+      <div id="hair-panel" class="panel">
         <div class="radio-shape-group">
           
           <div class="radio-shape square">
             <input type="radio" id="hair-1" name="shape" value="1" checked="checked">
             <label for="hair-1"></label>
-            <div class="shape skin-color2"></div>
+            <div class="shape"></div>
           </div>
           
           <div class="radio-shape square">
             <input type="radio" id="hair-2" name="shape" value="2">
             <label for="hair-2"></label>
-            <div class="shape skin-color2"></div>
+            <div class="shape"></div>
+          </div>
+          
+          <div class="radio-shape square">
+            <input type="radio" id="hair-3" name="shape" value="3">
+            <label for="hair-3"></label>
+            <div class="shape"></div>
           </div>
 
         </div>
@@ -490,12 +496,12 @@
     $mouthPanel.querySelector('#mouth-2 ~ .shape').innerHTML = MOUTHS[2];
 
     // initialization hair panel
-    $hairPanel.querySelector('#hair-1 ~ .shape').innerHTML = $layerStack.innerHTML;
-    //todo 
-    // must change div id from layer-stack to '' 
-    // and set class layer-stack-copy or layer-stack-preview
-    // then css properties were apply (css transformation scale)
-    $hairPanel.querySelector('#hair-2 ~ .shape').innerHTML = HEAD;
+    const previewCopy = $layerStack.cloneNode(true);
+    previewCopy.removeAttribute('id');
+    previewCopy.classList.add('layer-stack-clone');
+    $hairPanel.querySelector('#hair-1 ~ .shape').appendChild(previewCopy);
+    $hairPanel.querySelector('#hair-2 ~ .shape').appendChild(previewCopy.cloneNode(true));
+    $hairPanel.querySelector('#hair-3 ~ .shape').appendChild(previewCopy.cloneNode(true));
   });
 
 /**
