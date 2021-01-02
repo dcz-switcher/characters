@@ -467,6 +467,7 @@
   };
 
 
+  /* Nodes quick access */
   const $menu = document.querySelector('#menu ul');
   
   const $layerStack = document.querySelector('#preview');
@@ -573,9 +574,9 @@
     const count = parseInt(textbox.value, 10);
     parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
     */
-    const skinColor = document.querySelector("input[name='skin-color']:checked").value;
-    
+    //const skinColor = document.querySelector("input[name='skin-color']:checked").value;
     //parent.postMessage({ pluginMessage: { type: 'create-avatar', skinColor } }, '*');
+    
     parent.postMessage({ pluginMessage: { type: 'create-character', character } }, '*');
   }
 /*
